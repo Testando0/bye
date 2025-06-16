@@ -209,7 +209,7 @@
     let visitas = localStorage.getItem('visitas_blackout') || 0;
     visitas++;
     localStorage.setItem('visitas_blackout', visitas);
-    document.getElementById('visitas').textContent = `Suas Visitas registradas: ${visitas}`;
+    document.getElementById('visitas').textContent = `Suas Visitas Registradas: ${visitas}`;
 
     // Relógio em tempo real
     function atualizarHora() {
@@ -217,7 +217,7 @@
       const horas = agora.getHours().toString().padStart(2, '0');
       const minutos = agora.getMinutes().toString().padStart(2, '0');
       const segundos = agora.getSeconds().toString().padStart(2, '0');
-      document.getElementById('relogio').textContent = `Hora atual: ${horas}:${minutos}:${segundos}`;
+      document.getElementById('relogio').textContent = `Hora Atual: ${horas}:${minutos}:${segundos}`;
     }
     setInterval(atualizarHora, 1000);
     atualizarHora();
