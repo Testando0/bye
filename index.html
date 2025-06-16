@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="pt"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLACKOUT-API</title>
+  <link rel="icon" href="images/et26lj.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      background: black;
+    }
+
+    #intro-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 100;
+    }
+
+    #intro-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .intro-text {
+      color: #00ff66;
+      font-size: 2.5rem;
+      text-shadow: 0 0 20px #00ff66;
+      font-family: 'Orbitron', sans-serif;
+      z-index: 2;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 15px;
+    }
+
+    #background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/et26lj.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: -1;
+    }
+
+    .main-panel {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    .creator {
+      position: fixed;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #00ff66;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 0 0 10px #00ff66;
+      z-index: 10;
+      user-select: none;
+    }
+
+    video#main-video {
+      width: 360px;
+      height: 200px;
+      border: 5px solid black;
+      border-radius: 15px;
+      box-shadow: 0 0 25px #00ff66;
+      margin-bottom: 40px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @keyframes flutuar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .button-group a {
+      padding: 15px 30px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      font-size: 16px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 255, 102, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: flutuar 1.2s ease-in-out infinite;
+    }
+
+    .button-group a:nth-child(1) { animation-delay: 0s; }
+    .button-group a:nth-child(2) { animation-delay: 0.4s; }
+    .button-group a:nth-child(3) { animation-delay: 0.8s; }
+
+    .button-group a:hover {
+      transform: translateY(-20px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 255, 102, 0.6), 0 0 20px rgba(0, 255, 102, 0.6);
+      animation-play-state: paused;
+    }
+
+    .counter {
+      font-size: 18px;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    .clock {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #00ff66;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- INTRODUÇÃO -->
+  <div id="intro-container">
+    <video id="intro-video" autoplay="" muted="">
+      <source src="https://zero-two.info/uploads/videos/file-1750047399834-773009447.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Fundo e overlay -->
+  <div id="background-image"></div>
+  <div class="overlay"></div>
+
+  <!-- Nome do criador -->
+  <div class="creator">☆BLACKOUT-API☆</div>
+
+  <!-- Painel principal -->
+  <div class="main-panel" id="main-panel">
+    <video id="main-video" autoplay="" muted="" loop="">
+      <source src="https://zero-two.info/uploads/videos/file-1750047931134-17963551.mp4" type="video/mp4">
+    </video>
+
+    <div class="button-group">
+      <a href="/Blackout" target="_blank">Tubex</a>
+      <a href="login.html">Login</a>
+      <a href="/chat" target="_blank">Assistente</a>
+    </div>
+
+    <div class="clock" id="relogio">Hora atual: 05:59:02</div>
+    <div class="counter" id="visitas">Suas Visitas registradas: 1</div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Introdução: esconde após o fim do vídeo
+    const introVideo = document.getElementById('intro-video');
+    const introContainer = document.getElementById('intro-container');
+    const mainPanel = document.getElementById('main-panel');
+
+    introVideo.onended = () => {
+      introContainer.style.display = 'none';
+      mainPanel.style.display = 'flex';
+    };
+
+    // Contador de visitas
+    let visitas = localStorage.getItem('visitas_blackout') || 0;
+    visitas++;
+    localStorage.setItem('visitas_blackout', visitas);
+    document.getElementById('visitas').textContent = `Suas Visitas registradas: ${visitas}`;
+
+    // Relógio em tempo real
+    function atualizarHora() {
+      const agora = new Date();
+      const horas = agora.getHours().toString().padStart(2, '0');
+      const minutos = agora.getMinutes().toString().padStart(2, '0');
+      const segundos = agora.getSeconds().toString().padStart(2, '0');
+      document.getElementById('relogio').textContent = `Hora atual: ${horas}:${minutos}:${segundos}`;
+    }
+    setInterval(atualizarHora, 1000);
+    atualizarHora();
+  </script>
+
+
+</body></html>
